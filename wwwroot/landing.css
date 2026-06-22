@@ -3,6 +3,7 @@
 }
 
 
+
 .hero {
     display: flex;
     justify-content: space-around;
@@ -12,9 +13,11 @@
 }
 
 
+
 .hero-text {
     width: 40%;
 }
+
 
 
     .hero-text h1 {
@@ -22,9 +25,11 @@
     }
 
 
+
     .hero-text p {
         font-size: 20px;
     }
+
 
 
 .hero-image img {
@@ -34,11 +39,17 @@
 
 
 
-.btn {
+/* BOTON DEL LANDING */
+
+.landing-btn {
     padding: 12px 25px;
     font-size: 18px;
     cursor: pointer;
 }
+
+
+
+/* CLUBES */
 
 .clubes-container {
     display: flex;
@@ -47,11 +58,15 @@
     margin-top: 40px;
 }
 
+
+
 .club-card {
     text-decoration: none;
     color: black;
     text-align: center;
 }
+
+
 
     .club-card img {
         width: 250px;
@@ -59,6 +74,8 @@
         object-fit: cover;
         border-radius: 15px;
     }
+
+
 
     .club-card:hover {
         transform: scale(1.05);

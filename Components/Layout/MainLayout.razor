@@ -1,15 +1,70 @@
 ﻿@inherits LayoutComponentBase
 
-<NavMenu />
 
-<main>
-    <article class="content px-4">
-        @Body
-    </article>
-</main>
+<div class="layout-general">
+
+
+    <header class="header-tienda">
+
+
+        <h2>
+            TeamShirts
+        </h2>
+
+
+        <NavMenu />
+
+
+    </header>
+
+
+
+    <main class="contenido-principal">
+
+
+        <article class="content px-4">
+
+            @Body
+
+        </article>
+
+
+    </main>
+
+
+
+    <footer class="footer-tienda">
+
+
+        <p>
+            © 2026 TeamShirts - Tienda de camisetas de fútbol
+        </p>
+
+
+    </footer>
+
+
+
+</div>
+
+
+
+
 
 <div id="blazor-error-ui">
+
+
     An unhandled error has occurred.
-    <a href="" class="reload">Reload</a>
-    <a class="dismiss">🗙</a>
+
+
+    <a href="" class="reload">
+        Reload
+    </a>
+
+
+    <a class="dismiss">
+        🗙
+    </a>
+
+
 </div>
