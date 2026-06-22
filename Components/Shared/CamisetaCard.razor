@@ -1,0 +1,73 @@
+﻿<div class="card m-3" style="width:18rem;">
+
+    <img src="@Imagen"
+         class="card-img-top"
+         alt="@Nombre" />
+
+
+    <div class="card-body">
+
+
+        <h5 class="card-title">
+            @Nombre
+        </h5>
+
+
+        <p class="card-text">
+
+            @Descripcion
+
+        </p>
+
+
+        <PrecioCamiseta Precio="@Precio" />
+
+
+        <button class="btn btn-primary"
+                @onclick="Seleccionar">
+
+            Comprar
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+@code {
+
+
+    [Parameter]
+    public string Nombre { get; set; } = "";
+
+
+    [Parameter]
+    public string Descripcion { get; set; } = "";
+
+
+    [Parameter]
+    public string Imagen { get; set; } = "";
+
+
+    [Parameter]
+    public decimal Precio { get; set; }
+
+
+
+    [Parameter]
+    public EventCallback<string> OnComprar { get; set; }
+
+
+
+    private async Task Seleccionar()
+    {
+
+        await OnComprar.InvokeAsync(Nombre);
+
+    }
+
+
+}

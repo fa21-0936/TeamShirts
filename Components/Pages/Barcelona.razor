@@ -1,0 +1,52 @@
+﻿@page "/barcelona"
+
+<PageTitle>Barcelona</PageTitle>
+
+
+<h1>
+    Camisetas Barcelona
+</h1>
+
+
+<p>
+    @mensaje
+</p>
+
+
+<div class="d-flex flex-wrap">
+
+
+    <CamisetaCard Nombre="Camiseta Local"
+                  Descripcion="Temporada 2025-2026"
+                  Imagen="images/barcelona.jpg"
+                  Precio="89.99M"
+                  OnComprar="CamisetaSeleccionada" />
+
+
+
+    <CamisetaCard Nombre="Camiseta Visitante"
+                  Descripcion="Temporada 2025-2026"
+                  Imagen="images/barcelona.jpg"
+                  Precio="84.99M"
+                  OnComprar="CamisetaSeleccionada" />
+
+
+</div>
+
+
+
+@code {
+
+
+    private string mensaje = "";
+
+
+    private void CamisetaSeleccionada(string camiseta)
+    {
+
+        mensaje = $"Seleccionaste: {camiseta}";
+
+    }
+
+
+}
