@@ -1,45 +1,35 @@
 using TeamShirts.Components;
+using TeamShirts.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-// Configuración del HttpClient para consumir la API
-builder.Services.AddHttpClient("ApiClient", client =>
-{
-    client.BaseAddress = new Uri(
-        builder.Configuration["ApiUrl"]!
-    );
-});
-
-
-// Add services to the container.
+//Razor Components
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 
+builder.Services.AddScoped(sp =>
+    new HttpClient
+    {
+        BaseAddress = new Uri("http://localhost:5000/")
+    });
+
+// Servicios
+builder.Services.AddScoped<ICamisetaService, CamisetaService>();
+
 var app = builder.Build();
 
-
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Error", createScopeForErrors: true);
-
-    // The default HSTS value is 30 days.
-    // You may want to change this for production scenarios.
+    app.UseExceptionHandler("/Error");
     app.UseHsts();
 }
 
-
 app.UseHttpsRedirection();
-
 app.UseStaticFiles();
-
 app.UseAntiforgery();
-
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
-
 
 app.Run();
