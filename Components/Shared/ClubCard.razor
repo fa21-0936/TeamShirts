@@ -1,0 +1,35 @@
+﻿<a href="@Ruta" class="club-card">
+
+
+    <img src="@Imagen"
+         alt="@Nombre" />
+
+
+
+    <h3>
+        @Nombre
+    </h3>
+
+
+</a>
+
+
+
+@code {
+
+
+    [Parameter]
+    public string Nombre { get; set; } = "";
+
+
+
+    [Parameter]
+    public string Imagen { get; set; } = "";
+
+
+
+    [Parameter]
+    public string Ruta { get; set; } = "";
+
+
+}

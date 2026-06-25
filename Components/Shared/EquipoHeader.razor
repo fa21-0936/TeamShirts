@@ -1,0 +1,31 @@
+﻿<div class="equipo-header">
+
+
+    <h1>
+        @NombreEquipo
+    </h1>
+
+
+
+    <p>
+        @Descripcion
+    </p>
+
+
+</div>
+
+
+
+@code {
+
+
+    [Parameter]
+    public string NombreEquipo { get; set; } = "";
+
+
+
+    [Parameter]
+    public string Descripcion { get; set; } = "";
+
+
+}

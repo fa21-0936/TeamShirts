@@ -1,50 +1,73 @@
 ﻿@page "/barcelona"
 
+@using TeamShirts.Models
+@inject TeamShirts.Services.ICamisetaService CamisetaService
+
 <PageTitle>Barcelona</PageTitle>
 
 
-<h1>
-    Camisetas Barcelona
-</h1>
+<EquipoHeader NombreEquipo="FC Barcelona"
+              Descripcion="Camisetas por temporada" />
 
 
-<p>
-    @mensaje
-</p>
+@if (!string.IsNullOrEmpty(mensaje))
+{
+    <div class="alert alert-warning">
+        @mensaje
+    </div>
+}
 
 
-<div class="d-flex flex-wrap">
+@if (camisetas == null)
+{
+    <p>
+        Cargando camisetas...
+    </p>
+}
+else
+{
+    <div class="d-flex flex-wrap">
 
 
-    <CamisetaCard Nombre="Camiseta Local"
-                  Descripcion="Temporada 2025-2026"
-                  Imagen="images/barcelona.jpg"
-                  Precio="89.99M"
-                  OnComprar="CamisetaSeleccionada" />
+        @foreach (var camiseta in camisetas.Where(x => x.Equipo == "Barcelona"))
+        {
+
+            <CamisetaCard Nombre="Camiseta Barcelona"
+                          Descripcion="Temporada 2025-2026"
+                          Imagen="Imagenes/BAR1.png"
+                          Talla="@camiseta.Talla"
+                          Precio="@camiseta.Precio"
+                          OnComprar="CamisetaSeleccionada" />
+
+        }
 
 
-
-    <CamisetaCard Nombre="Camiseta Visitante"
-                  Descripcion="Temporada 2025-2026"
-                  Imagen="images/barcelona.jpg"
-                  Precio="84.99M"
-                  OnComprar="CamisetaSeleccionada" />
-
-
-</div>
-
+    </div>
+}
 
 
 @code {
 
 
+    private List<Camiseta>? camisetas;
+
+
     private string mensaje = "";
+
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        camisetas = await CamisetaService.GetCamisetas();
+
+    }
+
 
 
     private void CamisetaSeleccionada(string camiseta)
     {
 
-        mensaje = $"Seleccionaste: {camiseta}";
+        mensaje = $"Producto agregado al carrito: {camiseta}";
 
     }
 

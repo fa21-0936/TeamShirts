@@ -1,16 +1,21 @@
 ﻿<div class="card m-3" style="width:18rem;">
 
+
     <img src="@Imagen"
          class="card-img-top"
          alt="@Nombre" />
+
 
 
     <div class="card-body">
 
 
         <h5 class="card-title">
+
             @Nombre
+
         </h5>
+
 
 
         <p class="card-text">
@@ -20,18 +25,47 @@
         </p>
 
 
-        <PrecioCamiseta Precio="@Precio" />
+
+
+        <p>
+
+            <strong>
+                Talla:
+            </strong>
+
+            @Talla
+
+        </p>
+
+
+
+
+        <p>
+
+            <strong>
+                Precio:
+            </strong>
+
+            $@Precio
+
+        </p>
+
+
 
 
         <button class="btn btn-primary"
                 @onclick="Seleccionar">
 
+
             Comprar
+
 
         </button>
 
 
+
     </div>
+
 
 </div>
 
@@ -44,12 +78,20 @@
     public string Nombre { get; set; } = "";
 
 
+
     [Parameter]
     public string Descripcion { get; set; } = "";
 
 
+
     [Parameter]
     public string Imagen { get; set; } = "";
+
+
+
+    [Parameter]
+    public string Talla { get; set; } = "";
+
 
 
     [Parameter]
@@ -62,10 +104,13 @@
 
 
 
+
     private async Task Seleccionar()
     {
 
-        await OnComprar.InvokeAsync(Nombre);
+        await OnComprar.InvokeAsync(
+            $"{Nombre} - Talla {Talla} - ${Precio}"
+        );
 
     }
 
